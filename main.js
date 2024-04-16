@@ -32,3 +32,15 @@ function addEvent() {     //? Esta funcion hace que todas las funciones se junte
 
   renderEvents();
 }
+
+function dateDiff(d) { //? la "d" dentro del dateDiff hace referencia a los datos que pondremos, por ejemplo: dateDiff(eventDate.value) < 0, en este caso la "d" sería "eventDate.value".  
+  //? Esta funcion regresa el numero de dias que faltan de la fecha actual a la fecha destino 
+  //! Si el valor es negativo entonces no creara el evento(añadirlo a la lista).
+  const targetDate = new Date(d);
+  const dateNow = new Date();
+  const difference = targetDate.getTime() - dateNow.getTime();
+  const days = Math.ceil(difference / (1000 * 3600 * 24));
+  return days;
+
+}
+

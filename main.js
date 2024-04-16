@@ -8,7 +8,9 @@ const eventDate = document.getElementById('eventDate');
 const buttonAdd = document.getElementById('bAdd');
 const eventsContainer = document.getElementById('eventsContainer');
 
-
-
+document.getElementById('formEvents').addEventListener('submit', (e) => {
+  e.preventDefault();
+  addEvent();
+})
 
 

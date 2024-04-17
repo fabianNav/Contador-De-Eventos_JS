@@ -9,6 +9,18 @@ const eventDate = document.getElementById('eventDate');
 const buttonAdd = document.getElementById('bAdd');
 const eventsContainer = document.getElementById('eventsContainer');
 
+const json = load();
+
+try {
+  arr = JSON.parse(json);
+} catch (error) {
+  arr = [];
+}
+events = arr ? [ ...arr ] : [];
+
+renderEvents();
+
+
 document.getElementById('formEvents').addEventListener('submit', (e) => {
   e.preventDefault();
   addEvent();
@@ -29,6 +41,8 @@ function addEvent() {     //? Esta funcion hace que todas las funciones se junte
   };
 
   events.unshift(newEvent);  //? Agrega los datos ingresados en forma de objeto a la lista "events".
+
+  save(JSON.stringify(events));
 
   eventName.value = "";
 
@@ -74,9 +88,17 @@ function renderEvents() {  //? Esta funcion imprime los datos ingresados en el D
   document.querySelectorAll('.bDelete').forEach(button => {
     button.addEventListener('click', e => {
       const id = button.getAttribute('data-id');
-      events = events.filter(event => event.id !== id)  //? Filtra los eventos y compara los id del evento seleccionado con el evento de la lista, así devolvera una nueva lista pero sin el evento que eliminamos.
+      events = events.filter((event) => event.id !== id)  //? Filtra los eventos y compara los id del evento seleccionado con el evento de la lista, así devolvera una nueva lista pero sin el evento que eliminamos.
+      save();
       renderEvents();
     });
   });
 }
 
+function save(data) {
+  localStorage.setItem('items', data);
+}
+
+function load() {
+  return localStorage.getItem('items');
+}

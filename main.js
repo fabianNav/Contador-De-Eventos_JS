@@ -1,5 +1,6 @@
 import './css/style.css'
 
+//TODO Variables.
 let events = [];
 let arr = []; //? Sirve para cargar informacion y asignarla a eventos.
 
@@ -14,6 +15,7 @@ document.getElementById('formEvents').addEventListener('submit', (e) => {
 })
 
 function addEvent() {     //? Esta funcion hace que todas las funciones se junten y de ahí se van al evento principal.
+//TODO Evento principal
   if(eventName.value === "" || eventDate.value === "") {
     return;
   } else if (dateDiff(eventDate.value) < 0) {
@@ -35,6 +37,7 @@ function addEvent() {     //? Esta funcion hace que todas las funciones se junte
 
 function dateDiff(d) { //? la "d" dentro del dateDiff hace referencia a los datos que pondremos, por ejemplo: dateDiff(eventDate.value) < 0, en este caso la "d" sería "eventDate.value".  
   //? Esta funcion regresa el numero de dias que faltan de la fecha actual a la fecha destino 
+//TODO Calcular diferencia de días.
   //! Si el valor es negativo entonces no creara el evento(añadirlo a la lista).
   const targetDate = new Date(d); //? Fecha objetivo (fecha del evento).
   const dateNow = new Date();   //? Fecha de hoy.
@@ -45,26 +48,35 @@ function dateDiff(d) { //? la "d" dentro del dateDiff hace referencia a los dato
 }
 
 function renderEvents() {  //? Esta funcion imprime los datos ingresados en el DOM
+//TODO Insertar datos en el DOM
   const eventsHTML = events.map(e => {
     return  `
               <section class="event>
                 <article class="days">
-                  <span class="days-number">${dateDiff(e.Date)}</span>  //? acá se verá la diferencia de días.
+                  <span class="days-number">${dateDiff(e.date)}</span>
                   <span class="days-text">Días</span>
                 </article>
                 <article class="event-name">
-                  <span>${e.name}</span>    //? acá se verá el nombre del evento.
+                  <span>${e.name}</span>     
                 </article>
                 <article class="event-date">
-                  <span>${e.date}</span>  //? acá se verá el día asignado.
+                  <span>${e.date}</span>  
                 </article>
-                <div class="actions" data-id="${e.id}">  //? data-id es una metapropiedad para saber el id del elemento que quiero modificar/eliminar y proseguir con dicha accion.
-                  <button class="bDelete">Eliminar</button>
+                <div class="actions">  
+                  <button class="bDelete" data-id="${e.id}">Eliminar</button>
                 </div>
               </section>
             `;
   })
   eventsContainer.innerHTML = eventsHTML.join("");  //? Esto une el contenido de eventsContainer con el de eventsHTML gracias al metodo join().
-  
+
+//TODO Borrar evento
+  document.querySelectorAll('.bDelete').forEach(button => {
+    button.addEventListener('click', e => {
+      const id = button.getAttribute('data-id');
+      events = events.filter(event => event.id !== id)  //? Filtra los eventos y compara los id del evento seleccionado con el evento de la lista, así devolvera una nueva lista pero sin el evento que eliminamos.
+      renderEvents();
+    });
+  });
 }
 

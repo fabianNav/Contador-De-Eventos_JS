@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+[data-theme='light'] {
+    --background: #EEECE9;
+    --primary: #10AAAC;
+    --text: #403C3F;
+}
+
+[data-theme='dark'] {
+    --background: #0F4261;
+    --primary: #CB564C;
+    --text: #14CA43;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+
+/* TODO HEADER */
+
+header {
+    margin-bottom: 40px;
+    padding-top: 20px;
+    border-bottom: 1px solid var(--primary);
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    background-color: var(--primary);
+    color: var(--background);
+}
+
+#sectionTitulo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#sectionTitulo h1 {
+    margin-left: 61px;
+}
+
+/* TODO MODO OSCURO */
+
+.switch {
+    position: relative;
+    display: flex;
+    width: 60px;
+    height: 34px;
+    margin-right: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.sliderClass {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--text);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.sliderClass:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--background);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.sliderClass {
+    background-color: var(--text);
+}
+
+input:checked+.sliderClass:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+
+
+
+
+/* TODO MAIN */
+
+main section {
+    background-color: var(--primary);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+#inputsContainer {
+    display: flex;
+    background-color: var(--background);
+    justify-content: center;
+    padding: 10px;
+}
+
+#formEvents {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+#formEvents input {
+    background-color: var(--background);
+    border: 1px solid var(--primary);
+    color: var(--text);
+}
+
+#eventName::placeholder {
+    color: var(--primary);
+}
+
+
+#bAdd {
+    background-color: var(--background);
+    color: var(--text);
+    border: 1px solid var(--primary);
+    padding: 5px;
+    cursor: pointer;
+}
+
+#bAdd:hover {
+    background-color: var(--primary);
+    color: var(--background);
+    border: 1px solid var(--text);
+    transition: .4s;
+}
+
+
+.event {
+    background-color: var(--background);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 32px;
+}
+
+.event article, .actions {
+    margin-inline-start: 50px;
+}
+
+.actions {
+    display: flex;
+}
+
+.bDelete {
+    background-color: var(--background);
+    border: 1px solid var(--primary);
+    padding: 6px;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.bDelete:hover {
+    background-color: var(--primary);
+    color: var(--background);
+    border: 1px solid var(--text);
+    transition: .4s;
+}
+
+
+
+/* TODO FOOTER */
+footer {
+    border-top: 1px solid var(--primary);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    padding-top: 50px;
+}
+
+footer a {
+    color: var(--primary);
+    font-size: 90px;
+    margin-inline-start: 50px;
+    position: relative;
+}
+
+footer a::after {
+    content: "";
+    background-color: var(--primary);
+    width: calc(100% + 20px);
+    mix-blend-mode: color-burn;
+    height: 0;
+    position: absolute;
+    bottom: -8px;
+    left: -10px;
+    transition: all .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    border-radius: 60px;
+}
+
+footer a:hover::after {
+    height: calc(100% + 21px);
+    width: calc(100% + 21px);
+}
+
+#github:hover {
+    transition: .3s;
+    color: rgb(243, 32, 243);
+}
+
+#linkedin:hover {
+    transition: .3s;
+    color: rgb(255, 255, 255);
+}
+
+#whatsapp:hover {
+    transition: .3s;
+    color: #00ff00;
+}
+
+#mail:hover {
+    transition: .3s;
+    color: white;
+}
+
+@media only screen and (max-width: 548px)  {
+    footer {
+        width: 100%;
+    }
+    footer a {
+        font-size: 50px;
+        margin-inline: 10px;
+    }
+}

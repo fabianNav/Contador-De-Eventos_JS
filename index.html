@@ -1,36 +1,56 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contador Eventos</title>
-  </head>
-  <body>
-    <header>
 
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contador Eventos</title>
+</head>
 
-
-    <main>
-      <section>
-        <article>
-          <form id="formEvents">
-            <input type="text" id="eventName" placeholder="Nombre de evento">
-            <input type="date" id="eventDate">
-            <input type="submit" id="bAdd" value="Añadir evento">
-          </form>
-        </article>
-        <article id="eventsContainer">
-
-        </article>
-      </section>
-    </main>
+<body>
+  <header>
+    <section id="sectionTitulo">
+      <h1>Eventos</h1>
+    </section>
+    <section id="sectionSwitch">
+      <label class="switch">
+        <input type="checkbox" id="slider">
+        <span class="sliderClass"></span>
+      </label>
+    </section>
+  </header>
 
 
-    <footer>
+  <main>
+    <section>
+      <article id="inputsContainer">
+        <form id="formEvents">
+          <input type="text" id="eventName" placeholder="Nombre de evento">
+          <input type="date" id="eventDate">
+          <input type="submit" id="bAdd" value="Añadir evento">
+        </form>
+      </article>
+      <article id="eventsContainer">
 
-    </footer>
-    
-    <script type="module" src="/main.js"></script>
-  </body>
+      </article>
+    </section>
+  </main>
+
+
+  <footer>
+    <section>
+      <article>
+        <a id="github" href="https://github.com/fabianNav"><i class="fa-brands fa-github"></i></a>
+        <a id="linkedin" href="https://www.linkedin.com/in/luis-fabian-navarro-a9a42a217/"><i
+            class="fa-brands fa-linkedin-in"></i></a>
+        <a id="whatsapp" href="https://wa.link/4vfimv"><i class="fa-brands fa-whatsapp"></i></a>
+        <a id="mail" href="mailto:fn39001@gmail.com"><i class="fa-solid fa-at"></i></a>
+      </article>
+    </section>
+  </footer>
+
+  <script type="module" src="/main.js"></script>
+  <script src="https://kit.fontawesome.com/5095e6fda6.js" crossorigin="anonymous"></script>
+</body>
+
 </html>

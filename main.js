@@ -65,7 +65,7 @@ function renderEvents() {  //? Esta funcion imprime los datos ingresados en el D
 //TODO Insertar datos en el DOM
   const eventsHTML = events.map(e => {
     return  `
-              <section class="event>
+              <section class="event">
                 <article class="days">
                   <span class="days-number">${dateDiff(e.date)}</span>
                   <span class="days-text">Días</span>
@@ -102,3 +102,16 @@ function save(data) {
 function load() {
   return localStorage.getItem('items');
 }
+
+//TODO Modo oscuro
+const colorDelSistema = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+const slider = document.getElementById('slider');
+const setTheme = (tema) => {
+  document.documentElement.setAttribute('data-theme', tema);
+  localStorage.setItem('theme', tema);
+}
+slider.addEventListener('click', () => {
+  let switchToTheme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+  setTheme(switchToTheme);
+});
+setTheme(localStorage.getItem('theme') || colorDelSistema);

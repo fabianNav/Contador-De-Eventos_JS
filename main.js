@@ -90,6 +90,7 @@ function renderEvents() {  //? Esta funcion imprime los datos ingresados en el D
       const id = button.getAttribute('data-id');
       events = events.filter((event) => event.id !== id)  //? Filtra los eventos y compara los id del evento seleccionado con el evento de la lista, así devolvera una nueva lista pero sin el evento que eliminamos.
       renderEvents();
+      save();
     });
   });
 }
